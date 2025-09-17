@@ -4,44 +4,38 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.practicum.contactscompose.ui.theme.ContactsComposeTheme
 
 class MainActivity : ComponentActivity() {
+
+    companion object {
+        val contacts = listOf(
+            Contact(
+                name = "Евгений",
+                surname = "Андреевич",
+                familyName = "Лукашин",
+                isFavorite = true,
+                phone = "+7 495 495 95 95",
+                address = "г. Москва, 3-я улица Строителей, д. 25, кв. 12",
+                email = "ELukashin@practicum.ru"
+            ),
+            Contact(
+                name = "Николас",
+                familyName = "Кейдж",
+                imageRes = R.drawable.contact_photo,
+                phone = "---",
+                address = "Сан-Францисковская обл., дер. Мемасово, д. 42"
+            )
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             ContactsComposeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                ContactDetails(contacts.first())
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ContactsComposeTheme {
-        Greeting("Android")
     }
 }
