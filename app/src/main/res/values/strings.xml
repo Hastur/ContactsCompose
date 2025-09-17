@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Contact compose</string>
+    <string name="app_name">ContactsCompose</string>
     <string name="phone">Телефон</string>
     <string name="address">Адрес</string>
     <string name="email">E-mail</string>
